@@ -462,7 +462,6 @@
         </div>
     </div>
     <script>
-        // Global variables
         let userData;
         let audio;
         let playButton;
@@ -472,7 +471,6 @@
         let shuffleButton;
         let playlistSongs;
 
-        // All songs array
         const allSongs = [
             {
                 id: 0,
@@ -546,8 +544,7 @@
             },
         ];
 
-        // Global functions
-        function playSong(id) {
+        const playSong = (id) => {
             const song = userData?.songs.find((song) => song.id === id);
             audio.src = song.src;
             audio.title = song.title;
@@ -566,7 +563,7 @@
             audio.play();
         }
 
-        function deleteSong(id) {
+        const deleteSong = (id) => {
             if (userData?.currentSong?.id === id) {
                 userData.currentSong = null;
                 userData.songCurrentTime = 0;
@@ -599,13 +596,13 @@
             }
         }
 
-        function pauseSong() {
+        const pauseSong = () => {
             userData.songCurrentTime = audio.currentTime;
             playButton.classList.remove("playing");
             audio.pause();
         }
 
-        function playNextSong() {
+        const playNextSong = () => {
             if (userData?.currentSong === null) {
                 playSong(userData?.songs[0].id);
             } else {
@@ -618,7 +615,7 @@
             }
         }
 
-        function playPreviousSong() {
+        const playPreviousSong = () => {
             if (userData?.currentSong === null) return;
             else {
                 const currentSongIndex = getCurrentSongIndex();
@@ -630,7 +627,7 @@
             }
         }
 
-        function shuffle() {
+        const shuffle = () => {
             userData?.songs.sort(() => Math.random() - 0.5);
             userData.currentSong = null;
             userData.songCurrentTime = 0;
@@ -641,7 +638,7 @@
             setPlayButtonAccessibleText();
         }
 
-        function setPlayerDisplay() {
+        const setPlayerDisplay = () => {
             const playingSong = document.getElementById("player-song-title");
             const songArtist = document.getElementById("player-song-artist");
             const currentTitle = userData?.currentSong?.title;
@@ -651,7 +648,7 @@
             songArtist.textContent = currentArtist ? currentArtist : "";
         }
 
-        function highlightCurrentSong() {
+        const highlightCurrentSong = () => {
             const playlistSongElements = document.querySelectorAll(".playlist-song");
             const songToHighlight = document.getElementById(
                 `song-${userData?.currentSong?.id}`
@@ -664,7 +661,7 @@
             if (songToHighlight) songToHighlight.setAttribute("aria-current", "true");
         }
 
-        function renderSongs(array) {
+        const renderSongs = (array) => {
             const songsHTML = array
                 .map((song) => {
                     return `
@@ -686,7 +683,7 @@
             playlistSongs.innerHTML = songsHTML;
         }
 
-        function setPlayButtonAccessibleText() {
+        const setPlayButtonAccessibleText = () => {
             const song = userData?.currentSong || userData?.songs[0];
 
             playButton.setAttribute(
@@ -695,11 +692,11 @@
             );
         }
 
-        function getCurrentSongIndex() {
+        const getCurrentSongIndex = () => {
             return userData?.songs.indexOf(userData?.currentSong);
         }
 
-        function sortSongs() {
+        const sortSongs = () => {
             userData?.songs.sort((a, b) => {
                 if (a.title < b.title) {
                     return -1;
