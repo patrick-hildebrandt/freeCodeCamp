@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mandatory Audit: Palindrome Test</title>
+  <style>
+:root {
+  --col1: #6C757D;  /* Primary */
+  --col2: #ADB5BD;  /* Secondary */
+  --col3: #343A40;  /* Accent 1 */
+  --col4: #495057;  /* Accent 2 */
+  --col5: #CED4DA;  /* Accent 3 */
+  --col6: #F8F9FA;  /* Font Color */
+  --col7: rgba(255,128,0,70%);  /* Signal Orange */
+
+  --bg: linear-gradient(180deg, var(--col1) 60%, var(--col7));
+  --element-bg: var(--col3);
+  --ui-element-bg: var(--col2);
+  --img-bg: url(https://hildebrandt-work.bplaced.net/resource/waben2.jpg);
+
+  --width: 600px;
+  --min-width: 300px;
+  --max-width: 70vw;
+  --ui-height: 2rem;
+
+  --border-radius: 15px;
+  --border-width: 5px;
+  --border-style: outset;
+  --border-color: var(--col7);
+
+  --ui-border-radius: 15px;
+  --ui-border-width: 3px;
+  --ui-border-style: groove;
+  --ui-border-color: var(--col7);
+
+  --font-col: var(--col6);
+  --ui-font-col: var(--col3);
+
+  --font-size: 1.5rem;
+  --ui-font-size: 1.2rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+h1 {
+  width: var(--width);
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  margin: 1rem auto;
+  padding: 1rem;
+  color: var(--font-col);
+  background: var(--element-bg);
+  background-image: var(--img-bg);
+  background-size: cover;
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+#input-form {
+  width: var(--width);
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  margin: 0.5rem auto;
+  padding: 1rem;
+  background: var(--element-bg);
+  background-size: cover;
+  background-image: var(--img-bg);
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+#result {
+  width: var(--width);
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  margin: 1rem auto;
+  padding: 1rem;
+  color: var(--font-col);
+  font-size: var(--ui-font-size);
+  font-weight: bold;
+  background: var(--element-bg);
+  background-image: var(--img-bg);
+  background-size: cover;
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+label {
+  display: block;
+  margin: 0.5rem auto;
+  font-size: var(--font-size);
+  color: var(--font-col);
+}
+
+input {
+  text-align: center;
+  display: block;
+  width: 20rem;
+  max-width: 90%;
+  height: var(--ui-height);
+  margin: 0.5rem auto;
+  background: var(--ui-element-bg);
+  border: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color);
+  border-radius: var(--ui-border-radius);
+}
+
+button {
+  display: block;
+  width: 5rem;
+  height: var(--ui-height);
+  margin: 0.5rem auto;
+  font-size: var(--ui-font-size);
+  font-weight: bold;
+  color: var(--ui-font-col);
+  background: var(--ui-element-bg);
+  border: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color);
+  border-radius: var(--ui-border-radius);
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
+
+  </style>
+</head>
+<body>
+  <h1>Mandatory Audit:</br>Palindrome Test</h1>
+  <form id="input-form">
+    <label for="text-input">Insert suspected palindrome:
+    </label>
+      <input id="text-input" type="text" name="text-input">
+    <button type="submit" id="check-btn">Check</button>
+  </form>
+  <div id="result" class="hide">
+  </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const inputForm = document.getElementById("input-form");
+const inputText = document.getElementById("text-input");
+const result = document.getElementById("result");
+const positiveTest = " is a palindrome.";
+const negativeTest = " is not a palindrome";
+
+function testPalindrome(e) {
+  e.preventDefault();
+  // const rawInput = escapeHtml(inputText.value);
+  const rawInput = inputText.value;
+  const input = cleanInput(rawInput);
+
+  if (input) {
+    const reverseInput = input.split("").reverse().join("");
+
+    if (input.toLowerCase() === reverseInput.toLowerCase()) {
+      // result.innerText = demaskStr(rawInput) + positiveTest;
+      result.innerText = rawInput + positiveTest;
+    } else {
+      // result.innerText = demaskStr(rawInput) + negativeTest;
+      result.innerText = rawInput + negativeTest;
+    }
+
+    result.classList.remove("hide");
+  } else {
+    result.classList.add("hide");
+    alert("Please input a value");
+  }
+}
+
+function demaskStr(safe) {
+  return safe
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, "\"")
+    .replace(/&#039;/g, "'")
+    .replace(/&#96;/g, "`")
+    .replace(/&#40;/g, "(")
+    .replace(/&#41;/g, ")")
+    .replace(/&#123;/g, "{")
+    .replace(/&#125;/g, "}")
+    .replace(/&#91;/g, "[")
+    .replace(/&#93;/g, "]");
+}
+
+function escapeHtml(unsafe) {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;")
+    .replace(/`/g, "&#96;")
+    .replace(/\(/g, "&#40;")
+    .replace(/\)/g, "&#41;")
+    .replace(/{/g, "&#123;")
+    .replace(/}/g, "&#125;")
+    .replace(/\[/g, "&#91;")
+    .replace(/\]/g, "&#93;");
+}
+
+function cleanInput(str) {
+  const regex = /[\p{P}\p{S}\s]/gu;
+  return str.replace(regex, "");
+}
+
+inputForm.addEventListener("submit", testPalindrome);
+  });
+</script>
+</body>
+</html>
