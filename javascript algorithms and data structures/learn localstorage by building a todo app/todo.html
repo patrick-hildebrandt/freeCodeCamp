@@ -302,6 +302,8 @@
 
                 taskData.splice(dataArrIndex, 1);
                 localStorage.setItem("data", JSON.stringify(taskData));
+
+                updateTaskContainer();
             };
 
             window.editTask = (taskId) => {
@@ -314,8 +316,9 @@
                 descriptionInput.value = currentTask.description;
 
                 addOrUpdateTaskBtn.innerText = "Update Task";
-
                 taskForm.classList.toggle("hidden");
+                
+                updateTaskContainer();
             };
 
             const reset = () => {
