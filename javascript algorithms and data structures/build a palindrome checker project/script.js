@@ -61,6 +61,12 @@ function escapeHtml(unsafe) {
 }
 
 function cleanInput(str) {
+// \p{P}: findet alle Zeichen, die als Satzzeichen (Punctuation) klassifiziert sind.
+// \p{S}: findet alle Symbole (Symbols), wie Währungszeichen oder mathematische Operatoren.
+// \s: findet alle Leerzeichen (Whitespace), wie Leerzeichen, Tabulatoren und Zeilenumbrüche.
+// [...]: definiert eine Zeichenklasse, die eines der darin enthaltenen Zeichen oder Gruppen findet.
+// g: der globale Modifikator, der sicherstellt, dass alle Vorkommen im Text gefunden werden, nicht nur das erste.
+// u: der Unicode-Modifikator, der den regulären Ausdruck als Unicode-Text behandelt.
   const regex = /[\p{P}\p{S}\s]/gu;
   return str.replace(regex, "");
 }

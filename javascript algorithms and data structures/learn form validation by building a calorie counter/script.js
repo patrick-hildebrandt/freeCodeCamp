@@ -6,12 +6,21 @@ const clearButton = document.getElementById('clear');
 const output = document.getElementById('output');
 let isError = false;
 
-function cleanInputString(str) {
-  const regex = /[+-\s]/g;
-  return str.replace(regex, '');
+// function cleanInputString(str) {
+// [+-\s]: definiert eine Zeichenklasse, die eines der darin enthaltenen Zeichen findet:
+// +: das Pluszeichen.
+// -: das Minuszeichen.
+// \s: ein Leerzeichenzeichen (Whitespace), wie Leerzeichen, Tabulatoren und Zeilenumbrüche.
+// g: der globale Modifikator, der sicherstellt, dass alle Vorkommen im Text gefunden werden, nicht nur das erste.
+const regex = /[+-\s]/g;
+return str.replace(regex, '');
 }
 
 function isInvalidInput(str) {
+  // \d+: findet eine oder mehrere Ziffern (0-9).
+  // e: findet den Buchstaben "e".
+  // \d+: findet eine oder mehrere Ziffern (0-9).
+  // i: der Modifikator, der die Groß- und Kleinschreibung ignoriert (case-insensitive).
   const regex = /\d+e\d+/i;
   return str.match(regex);
 }
