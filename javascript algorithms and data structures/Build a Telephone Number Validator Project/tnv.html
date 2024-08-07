@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandatory Audit: Telephone Number Validator</title>
+    <style>
+        :root {
+            --col1: #003390;
+            --col2: #FFFFFF;
+            --col3: #F1F1F1;
+            --col4: #A0A0A0;
+            --col5: #D9D9D9;
+            --col6: #c00080;
+            --col7: #cc0000;
+
+            --bg: linear-gradient(180deg, var(--col2) 60%, var(--col1));
+            --element-bg: var(--col3);
+            --ui-element-bg: var(--col6);
+            --img-bg: linear-gradient(to bottom, var(--col2), var(--col5));
+
+            --width: 600px;
+            --min-width: 300px;
+            --max-width: 70vw;
+            --ui-height: 2rem;
+
+            --border-radius: 15px;
+            --border-width: 5px;
+            --border-style: outset;
+            --border-color: var(--col7);
+
+            --ui-border-radius: 15px;
+            --ui-border-width: 3px;
+            --ui-border-style: groove;
+            --ui-border-color: var(--col2);
+
+            --font-col: var(--col6);
+            --ui-font-col: var(--col2);
+
+            --font-size: 1.5rem;
+            --ui-font-size: 1.2rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg);
+        }
+
+        h1 {
+            width: var(--width);
+            min-width: var(--min-width);
+            max-width: var(--max-width);
+            margin: 1rem auto;
+            padding: 1rem;
+            color: var(--font-col);
+            background: var(--element-bg);
+            background-image: var(--img-bg);
+            background-size: cover;
+            border: var(--border-width) var(--border-style) var(--border-color);
+            border-radius: var(--border-radius);
+        }
+
+        #input-form {
+            width: var(--width);
+            min-width: var(--min-width);
+            max-width: var(--max-width);
+            margin: 0.5rem auto;
+            padding: 1rem;
+            background: var(--element-bg);
+            background-size: cover;
+            background-image: var(--img-bg);
+            border: var(--border-width) var(--border-style) var(--border-color);
+            border-radius: var(--border-radius);
+        }
+
+        #results-div {
+            width: var(--width);
+            min-width: var(--min-width);
+            max-width: var(--max-width);
+            margin: 1rem auto;
+            padding: 1rem;
+            color: var(--font-col);
+            font-size: var(--ui-font-size);
+            font-weight: bold;
+            background: var(--element-bg);
+            background-image: var(--img-bg);
+            background-size: cover;
+            border: var(--border-width) var(--border-style) var(--border-color);
+            border-radius: var(--border-radius);
+        }
+
+        label {
+            display: block;
+            margin: 0.5rem auto;
+            font-size: var(--font-size);
+            color: var(--font-col);
+        }
+
+        input {
+            color: var(--col2);
+            text-align: center;
+            display: block;
+            width: 20rem;
+            max-width: 90%;
+            height: var(--ui-height);
+            margin: 0.5rem auto;
+            background: var(--ui-element-bg);
+            border: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color);
+            border-radius: var(--ui-border-radius);
+        }
+
+        button {
+            /* display: block; */
+            width: 6rem;
+            height: var(--ui-height);
+            margin: 0.5rem auto;
+            padding: 3px;
+            font-size: var(--ui-font-size);
+            font-weight: bold;
+            color: var(--ui-font-col);
+            background: var(--ui-element-bg);
+            border: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color);
+            border-radius: var(--ui-border-radius);
+            cursor: pointer;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .parallel {
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mandatory Audit:</br>Telephone Number Validator</h1>
+    <form id="input-form">
+        <label for="user-input">Number to validate: </label>
+        <input id="user-input" type="text" name="number">
+        <div class="parallel">
+            <button id="clear-btn" type="reset">Clear</button>
+            <button id="check-btn" type="submit">Validate</button>
+        </div>
+    </form>
+    <div id="results-div" class="hide"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('check-btn').addEventListener('click', (e) => {
+                e.preventDefault();
+                const userInput = document.getElementById('user-input').value.trim();
+                const resultsDiv = document.getElementById('results-div');
+                const validUSPhoneNumber = /^(1\s?)?(\(\d{3}\)|\d{3})([\s-]?)\d{3}([\s-]?)\d{4}$/;
+
+                if (!userInput) {
+                    alert("Please provide a phone number");
+                    return;
+                }
+
+                if (validUSPhoneNumber.test(userInput)) {
+                    resultsDiv.textContent = `Valid US number: ${userInput}`;
+                    resultsDiv.classList.remove("hide");
+                } else {
+                    resultsDiv.textContent = `Invalid US number: ${userInput}`;
+                    resultsDiv.classList.remove("hide");
+                }
+            });
+
+            document.getElementById('clear-btn').addEventListener('click', () => {
+                const resultsDiv = document.getElementById('results-div');
+                document.getElementById('results-div').textContent = "";
+                resultsDiv.classList.add("hide");
+            });
+        });
+    </script>
+</body>
+
+</html>
