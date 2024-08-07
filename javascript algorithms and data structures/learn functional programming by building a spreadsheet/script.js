@@ -8,6 +8,9 @@ const infixToFunction = {
 const infixEval = (str, regex) => str.replace(regex, (_match, arg1, operator, arg2) => infixToFunction[operator](parseFloat(arg1), parseFloat(arg2)));
 
 const highPrecedence = str => {
+    // ([\d.]+): Gruppe 1, eine Zahl oder Dezimalzahl (mindestens eine Ziffer oder Punkt)
+    // ([*\/]): Gruppe 2, ein Operator für Multiplikation (*) oder Division (/)
+    // ([\d.]+): Gruppe 3, eine Zahl oder Dezimalzahl (mindestens eine Ziffer oder Punkt)
     const regex = /([\d.]+)([*\/])([\d.]+)/;
     const str2 = infixEval(str, regex);
     return str === str2 ? str : highPrecedence(str2);
@@ -44,28 +47,62 @@ const spreadsheetFunctions = {
 }
 
 const applyFunction = str => {
+    console.log("### applyFunction(str) ###");
+    console.log("str: ", str);
     const noHigh = highPrecedence(str);
+    console.log("noHigh: ", noHigh);
+    // ([\d.]+): Gruppe 1, eine Zahl oder Dezimalzahl (mindestens eine Ziffer oder Punkt)
+    // ([+-]): Gruppe 2, ein Operator für Addition (+) oder Subtraktion (-)
+    // ([\d.]+): Gruppe 3, eine Zahl oder Dezimalzahl (mindestens eine Ziffer oder Punkt)
     const infix = /([\d.]+)([+-])([\d.]+)/;
     const str2 = infixEval(noHigh, infix);
+    console.log("str2: ", str2);
+    // ([a-z0-9]*): Gruppe 1, der Funktionsname, der aus Buchstaben und/oder Zahlen bestehen kann
+    // \(...\): Escape-Zeichen, welche die Klammern als normale Klammern behandelt
+    // ([0-9., ]*): Gruppe 2, die Argumente in Klammern (Zahlen, Dezimalzahlen, Kommas und Leerzeichen)
+    // (?!.*\(): (?!...) = Negative Lookahead, stellt sicher, dass keine weiteren öffnenden Klammern vorhanden sind
     const functionCall = /([a-z0-9]*)\(([0-9., ]*)\)(?!.*\()/i;
     const toNumberList = args => args.split(",").map(parseFloat);
     const apply = (fn, args) => spreadsheetFunctions[fn.toLowerCase()](toNumberList(args));
-    return str2.replace(functionCall, (match, fn, args) => spreadsheetFunctions.hasOwnProperty(fn.toLowerCase()) ? apply(fn, args) : match);
+    // return str2.replace(functionCall, (match, fn, args) => spreadsheetFunctions.hasOwnProperty(fn.toLowerCase())
+    //     ? apply(fn, args) : match);
+    return str2.replace(functionCall, (match, fn, args) => {
+        console.log(`match: ${match}, fn: ${fn}, args: ${args}`);
+        return spreadsheetFunctions.hasOwnProperty(fn.toLowerCase())
+            ? apply(fn, args)
+            : match;
+    });
 }
 
 const range = (start, end) => Array(end - start + 1).fill(start).map((element, index) => element + index);
 const charRange = (start, end) => range(start.charCodeAt(0), end.charCodeAt(0)).map(code => String.fromCharCode(code));
 
 const evalFormula = (x, cells) => {
+    console.log("### evalFormula(x, cells) ###");
+    console.log("x: ", x);
+    console.log("cells: ", cells);
     const idToText = id => cells.find(cell => cell.id === id).value;
+    // ([A-J]): Gruppe 1, ein Buchstabe von A bis J
+    // ([1-9][0-9]?): Gruppe 2, eine Zahl zwischen 1 und 99
+    // :: Ein Doppelpunkt als Trennzeichen
+    // ([A-J]): Gruppe 3, ein Buchstabe von A bis J
+    // ([1-9][0-9]?): Gruppe 4, eine Zahl zwischen 1 und 99
+    // g: Steht für "global". Der Regex wird auf alle Übereinstimmungen im Text angewendet und nicht nur auf die erste.
+    // i: Steht für "ignore case". Die Groß- und Kleinschreibung wird ignoriert, daher sind die Buchstaben A-J nicht zwischen Groß- und Kleinschreibung unterscheidbar.
     const rangeRegex = /([A-J])([1-9][0-9]?):([A-J])([1-9][0-9]?)/gi;
     const rangeFromString = (num1, num2) => range(parseInt(num1), parseInt(num2));
     const elemValue = num => character => idToText(character + num);
     const addCharacters = character1 => character2 => num => charRange(character1, character2).map(elemValue(num));
-    const rangeExpanded = x.replace(rangeRegex, (_match, char1, num1, char2, num2) => rangeFromString(num1, num2).map(addCharacters(char1)(char2)));
+    const rangeExpanded = x.replace(rangeRegex, (_match, char1, num1, char2, num2) => rangeFromString(num1, num2)
+        .map(addCharacters(char1)(char2)));
+    console.log("rangeExpanded: ", rangeExpanded);
+    // [A-J]: Ein Buchstabe von A bis J
+    // [1-9][0-9]?: Eine Zahl zwischen 1 und 99
     const cellRegex = /[A-J][1-9][0-9]?/gi;
     const cellExpanded = rangeExpanded.replace(cellRegex, match => idToText(match.toUpperCase()));
+    console.log("cellExpanded: ", cellExpanded);
     const functionExpanded = applyFunction(cellExpanded);
+    console.log("functionExpanded: ", functionExpanded);
     return functionExpanded === x ? functionExpanded : evalFormula(functionExpanded, cells);
 }
 

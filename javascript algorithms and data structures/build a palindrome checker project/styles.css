@@ -12,7 +12,7 @@
   --col6: #F8F9FA;
   /* Font Color */
   --col7: rgba(255, 128, 0, 70%);
-  /* Signal Orange */
+  /* Signal */
 
   --bg: linear-gradient(180deg, var(--col1) 60%, var(--col7));
   --element-bg: var(--col3);
