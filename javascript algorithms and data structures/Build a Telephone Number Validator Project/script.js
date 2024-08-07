@@ -20,6 +20,6 @@ document.getElementById('check-btn').addEventListener('click', (e) => {
 
 document.getElementById('clear-btn').addEventListener('click', () => {
     const resultsDiv = document.getElementById('results-div');
-    document.getElementById('results-div').textContent = "";
+    resultsDiv.textContent = "";
     resultsDiv.classList.add("hide");
 });
