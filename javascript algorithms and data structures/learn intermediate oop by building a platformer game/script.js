@@ -209,7 +209,6 @@ const animate = () => {
         if (checkpointDetectionRules.every((rule) => rule)) {
             checkpoint.claim();
 
-
             if (index === checkpoints.length - 1) {
                 isCheckpointCollisionDetectionActive = false;
                 showCheckpointScreen("You reached the final checkpoint!");
@@ -217,12 +216,9 @@ const animate = () => {
             } else if (player.position.x >= checkpoint.position.x && player.position.x <= checkpoint.position.x + 40) {
                 showCheckpointScreen("You reached a checkpoint!");
             }
-
-
         };
     });
 }
-
 
 const keys = {
     rightKey: {
