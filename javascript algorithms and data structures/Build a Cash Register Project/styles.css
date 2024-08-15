@@ -1,0 +1,131 @@
+:root {
+    --col1: #1C4031;
+    /* Dunkler Grünton */
+    --col2: #FFFFFF;
+    /* Weiß für Text und Hintergründe */
+    --col3: #E0E0E0;
+    /* Hellgrau für sanfte Kontraste */
+    --col4: #808080;
+    /* Mittelgrau */
+    --col5: #D9D9D9;
+    /* Leicht helleres Grau für Details */
+    --col6: #3A5F3D;
+    /* Dunkleres Grün für markante Elemente */
+    --col7: #2E4D2C;
+    /* Dunklerer Grünton für Ränder und Akzente */
+
+    --bg: linear-gradient(180deg, var(--col2) 60%, var(--col1));
+    --element-bg: var(--col3);
+    --element-bg-gradient: linear-gradient(to bottom, var(--col2), var(--col5));
+
+    --width: 600px;
+    --min-width: 300px;
+    --max-width: 70vw;
+    --ui-height: 2rem;
+
+    --border-radius: 15px;
+    --border-width: 5px;
+    --border-style: outset;
+    --border-color: var(--col7);
+
+    --ui-border-width: 3px;
+    --ui-border-style: groove;
+    --ui-border-color: var(--col2);
+
+    --font-col: var(--col6);
+    --ui-font-col: var(--col2);
+
+    --font-size: 1.5rem;
+    --ui-font-size: 1.2rem;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+}
+
+h1,
+#price-to-pay,
+#cash-in-drawer,
+#cash-form,
+#change-due {
+    width: var(--width);
+    min-width: var(--min-width);
+    max-width: var(--max-width);
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    color: var(--font-col);
+    background: var(--element-bg);
+    background-image: var(--element-bg-gradient);
+    background-size: cover;
+    border: var(--border-width) var(--border-style) var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+#price {
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+table {
+    color: var(--font-col);
+    margin: 0.5rem auto;
+}
+
+th,
+td {
+    background: var(--bg);
+    padding: 0 0.2rem 0.3rem 0.2rem;
+}
+
+input,
+button {
+    display: block;
+    margin: 0.5rem auto;
+    height: var(--ui-height);
+    border-radius: var(--border-radius);
+    border: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color);
+    color: var(--ui-font-col);
+    background: var(--col6);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input {
+    text-align: center;
+    width: 20rem;
+    max-width: 90%;
+}
+
+button {
+    width: 6.5rem;
+    font-size: var(--ui-font-size);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin: 0.5rem auto;
+    font-size: var(--font-size);
+    color: var(--font-col);
+}
