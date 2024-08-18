@@ -1,0 +1,162 @@
+:root {
+    --col1: #FFDE00;
+    /* Pikachu Gelb für Hauptakzente */
+    --col2: #FFFFFF;
+    /* Weiß für Text und Hintergründe */
+    --col3: #FFCB05;
+    /* Gelb für sanfte Kontraste */
+    --col4: #3B4CCA;
+    /* Blau für markante Elemente (Pokéball-Farben) */
+    --col5: #FF0000;
+    /* Rot für zusätzliche Kontraste */
+    --col6: #2A75BB;
+    /* Dunkelblau für weitere Akzente */
+
+    --bg: linear-gradient(180deg, var(--col2) 60%, var(--col1));
+    --element-bg: var(--col2);
+    --element-bg-gradient: linear-gradient(135deg, var(--col2), var(--col3));
+
+    --width: 600px;
+    --min-width: 300px;
+    --max-width: 70vw;
+
+    --border-radius: 15px;
+    --border-width: 5px;
+    --border-style: outset;
+    --border-color: var(--col4);
+
+    --ui-height: 2rem;
+    --ui-border-width: 3px;
+    --ui-border-style: solid;
+    --ui-border-color: var(--col2);
+
+    --font-col: var(--col6);
+    --ui-font-col: var(--col2);
+
+    --font-size: 1.5rem;
+    --ui-font-size: 1.2rem;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+}
+
+h1,
+#pokemon-container,
+#search-form {
+    width: var(--width);
+    min-width: var(--min-width);
+    max-width: var(--max-width);
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    color: var(--font-col);
+    background-image: var(--element-bg-gradient);
+    background-size: cover;
+    border: var(--border-width) var(--border-style) var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+h2,
+p {
+    font-weight: bold;
+}
+
+h2 {
+    font-size: var(--font-size);
+}
+
+p {
+    font-size: var(--ui-font-size);
+}
+
+table {
+    color: var(--font-col);
+    margin: 0.5rem auto;
+    width: 80%;
+    border-collapse: separate;
+    border-spacing: 0.2rem;
+}
+
+td {
+    font-weight: bold;
+    background: var(--element-bg);
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: var(--border-radius);
+    border: var(--ui-border-width) var(--ui-border-style) var(--col5);
+}
+
+#sprite {
+    width: 40%;
+    overflow: hidden;
+    margin: -1rem 0 -2rem 0;
+}
+
+#sprite img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.inline-block {
+    display: inline-block;
+    margin: 1rem;
+    padding: 0.5rem;
+    color: var(--font-col);
+    font-weight: bold;
+    border: var(--ui-border-width) var(--ui-border-style) var(--font-col);
+    border-radius: var(--border-radius);
+}
+
+input,
+button {
+    display: block;
+    margin: 0.5rem auto;
+    height: var(--ui-height);
+    border-radius: var(--border-radius);
+    border: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color);
+    color: var(--ui-font-col);
+    background: var(--col5);
+    font-weight: bold;
+}
+
+input:focus {
+    border: var(--ui-border-width) var(--ui-border-style) var(--border-color);
+    outline: none;
+}
+
+button:hover {
+    color: var(--col1);
+    border-color: var(--col4);
+}
+
+input {
+    text-align: center;
+    width: 20rem;
+    max-width: 90%;
+}
+
+button {
+    width: 6.5rem;
+    font-size: var(--ui-font-size);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin: 0.5rem auto;
+    font-size: var(--font-size);
+    color: var(--font-col);
+}

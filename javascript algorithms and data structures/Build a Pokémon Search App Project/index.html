@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandatory Audit: Pokémon Search App</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <h1>Mandatory Audit:</br>Pokémon Search App</h1>
+
+    <form id="search-form">
+        <label for="search-input">Enter Name of ID:</label>
+        <input id="search-input" type="text" name="search-input" required>
+        <button id="search-button" type="submit">Search</button>
+    </form>
+
+    <div id="pokemon-container">
+        <h2>
+            <span id="pokemon-name"></span>
+            <span id="pokemon-id"></span>
+        </h2>
+        <p>
+            Height: <span id="height"></span>
+            Weight: <span id="weight"></span>
+        </p>
+        <div id="image"></div>
+        <div id="types"></div>
+        <table>
+            <tr>
+                <td>HP:</td>
+                <td><span id="hp"></span></td>
+            </tr>
+            <tr>
+                <td>Attack:</td>
+                <td><span id="attack"></span></td>
+            </tr>
+            <tr>
+                <td>Defense:</td>
+                <td><span id="defense"></span></td>
+            </tr>
+            <tr>
+                <td>Special Attack:</td>
+                <td><span id="special-attack"></span></td>
+            </tr>
+            <tr>
+                <td>Special Defence:</td>
+                <td><span id="special-defense"></span></td>
+            </tr>
+            <tr>
+                <td>Speed:</td>
+                <td><span id="speed"></span></td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
