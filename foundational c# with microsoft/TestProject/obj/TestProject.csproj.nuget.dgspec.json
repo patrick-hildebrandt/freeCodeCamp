@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\TestProject.csproj": {}
+    "d:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\TestProject.csproj": {}
   },
   "projects": {
-    "D:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\TestProject.csproj": {
+    "d:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\TestProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\TestProject.csproj",
+        "projectUniqueName": "d:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\TestProject.csproj",
         "projectName": "TestProject",
-        "projectPath": "D:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\TestProject.csproj",
+        "projectPath": "d:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\TestProject.csproj",
         "packagesPath": "C:\\Users\\patri\\.nuget\\packages\\",
-        "outputPath": "D:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\obj\\",
+        "outputPath": "d:\\repos\\patrickhildebrandt\\freeCodeCamp\\foundational c# with microsoft\\TestProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
