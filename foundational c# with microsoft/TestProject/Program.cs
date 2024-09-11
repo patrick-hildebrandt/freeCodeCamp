@@ -200,3 +200,10 @@
 // Console.WriteLine(newMessage);
 // Console.WriteLine($"'o' appears {letterCount} times.");
 
+Console.WriteLine("a" == "a");
+Console.WriteLine("a" == "A");
+Console.WriteLine(1 == 2);
+string myValue = "a";
+Console.WriteLine(myValue == "a");
+
+// Verbessern der Überprüfung auf die Gleichheit von Zeichenfolgen mithilfe der integrierten Hilfsmethoden einer Zeichenfolge
