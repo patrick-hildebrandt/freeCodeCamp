@@ -179,14 +179,10 @@
 //    a particular character appears, then prints the results
 //    to the console window.
 //  */
-
 // string originalMessage = "The quick brown fox jumps over the lazy dog.";
-
 // char[] message = originalMessage.ToCharArray();
 // Array.Reverse(message);
-
 // int letterCount = 0;
-
 // foreach (char letter in message)
 // {
 //     if (letter == 'o')
@@ -194,9 +190,7 @@
 //         letterCount++;
 //     }
 // }
-
 // string newMessage = new String(message);
-
 // Console.WriteLine(newMessage);
 // Console.WriteLine($"'o' appears {letterCount} times.");
 
@@ -206,4 +200,38 @@ Console.WriteLine(1 == 2);
 string myValue = "a";
 Console.WriteLine(myValue == "a");
 
-// Verbessern der Überprüfung auf die Gleichheit von Zeichenfolgen mithilfe der integrierten Hilfsmethoden einer Zeichenfolge
+string value1 = " a";
+string value2 = "A ";
+Console.WriteLine(value1.Trim().ToLower() == value2.Trim().ToLower());
+
+Console.WriteLine("a" != "a");
+Console.WriteLine("a" != "A");
+Console.WriteLine(1 != 2);
+
+string myValue1 = "a";
+Console.WriteLine(myValue1 != "a");
+
+Console.WriteLine(1 > 2);
+Console.WriteLine(1 < 2);
+Console.WriteLine(1 >= 1);
+Console.WriteLine(1 <= 1);
+
+// StartsWith()
+// EndsWith()
+
+string pangram = "The quick brown fox jumps over the lazy dog.";
+Console.WriteLine(pangram.Contains("fox"));
+Console.WriteLine(pangram.Contains("cow"));
+
+Console.WriteLine(pangram.Contains("fox") == false);
+Console.WriteLine(!pangram.Contains("fox"));
+
+Console.WriteLine(!pangram.Contains("fox"));
+Console.WriteLine(!pangram.Contains("cow"));
+
+int a = 7;
+int b = 6;
+Console.WriteLine(a != b);
+string s1 = "Hello";
+string s2 = "Hello";
+Console.WriteLine(s1 != s2);
