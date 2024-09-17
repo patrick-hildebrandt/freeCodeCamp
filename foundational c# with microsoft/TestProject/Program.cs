@@ -402,3 +402,140 @@
 //     if (i % 5 == 0) line += "Buzz";
 //     Console.WriteLine(line);
 // }
+
+// Random random = new();
+// int current = random.Next(1, 11);
+// do
+// {
+//     current = random.Next(1, 11);
+//     Console.WriteLine(current);
+// } while (current != 7);
+// while (current >= 3)
+// {
+//     Console.WriteLine(current);
+//     current = random.Next(1, 11);
+// }
+// Console.WriteLine($"Last number: {current}");
+// do {
+//     current = random.Next(1, 11);
+
+//     if (current >= 8) continue;
+
+//     Console.WriteLine(current);
+// } while (current != 7);
+
+// Random random = new();
+// int attack()
+// {
+//     return random.Next(1, 11);
+// }
+// int hero = 10;
+// int monster = 10;
+// do
+// {
+//     int heroAttack = attack();
+//     monster -= heroAttack;
+//     Console.WriteLine($"Monster was damaged, lost {heroAttack} health and now has {monster} health.");
+//     // if (monster <= 0) continue/break;
+//     if (monster > 0)
+//     {
+//         int monsterAttack = attack();
+//         hero -= monsterAttack;
+//         Console.WriteLine($"Hero was damaged, lost {monsterAttack} health and now has {hero} health.");
+//     }
+// } while (hero > 0 && monster > 0);
+// // Console.WriteLine(hero > monster ? "Hero wins!" : "Monster wins!");
+// if (hero > 0)
+// {
+//     Console.WriteLine("Hero wins!");
+// }
+// else if (monster > 0)
+// {
+//     Console.WriteLine("Monster wins!");
+// }
+// else
+// {
+//     Console.WriteLine("Both hero and monster died.");
+// }
+
+// nullable type
+// string? readResult;
+// bool validEntry = false;
+// Console.WriteLine("Enter a string containing at least three characters:");
+// do
+// {
+//     readResult = Console.ReadLine();
+//     if (readResult != null)
+//     {
+//         if (readResult.Length >= 3)
+//         {
+//             validEntry = true;
+//         }
+//         else
+//         {
+//             Console.WriteLine("Your input is invalid, please try again.");
+//         }
+//     }
+// } while (validEntry == false);
+// int numericValue = 0;
+// bool validNumber = false;
+// validNumber = int.TryParse(readResult, out numericValue);
+// Console.WriteLine($"Entered: {readResult}");
+// Console.WriteLine($"Valid number: {validNumber}");
+// Console.WriteLine($"Numeric value: {numericValue}");
+
+// Console.WriteLine("Enter an integer value between 5 and 10");
+// string? input;
+// bool valid = false;
+// int number = 0;
+// do
+// {
+//     input = Console.ReadLine();
+//     valid = int.TryParse(input, out number);
+//     if (!valid)
+//         Console.WriteLine("Sorry, you entered an invalid number, please try again");
+//     else if (number < 5 || number > 10)
+//     {
+//         Console.WriteLine($"You entered {number}. Please enter a number between 5 and 10.");
+//         valid = false;
+//     }
+// } while (!valid);
+// Console.WriteLine($"Your input value ({number}) has been accepted.");
+
+// Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+// string role = "";
+// while (role == "")
+// {
+//     string check = Console.ReadLine().Trim();
+//     switch (check.ToLower())
+//     {
+//         case "administrator":
+//             role = "Administrator";
+//             break;
+//         case "manager":
+//             role = "Manager";
+//             break;
+//         case "user":
+//             role = "User";
+//             break;
+//         default:
+//             Console.WriteLine($"The role name that you entered, \"{check}\" is not valid. Enter your role name (Administrator, Manager, or User)");
+//             break;
+//     }
+// }
+// Console.WriteLine($"Your input value ({role}) has been accepted.");
+
+// string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+// foreach (string myString in myStrings)
+// {
+//     int periodLocation = myString.IndexOf(".");
+//     string sentence = myString;
+//     while (periodLocation != -1)
+//     {
+//         Console.WriteLine(sentence.Substring(0, periodLocation).TrimStart());
+//         sentence = sentence.Remove(0, periodLocation + 1);
+//         periodLocation = sentence.IndexOf(".");
+//     }
+//     if (sentence.Length > 0)
+//         Console.WriteLine(sentence.TrimStart());
+// }
