@@ -335,9 +335,49 @@ do
 
         case "4":
             // Ensure animal nicknames and personality descriptions are complete
-            Console.WriteLine("Challenge Project - please check back soon to see progress.");
-            Console.WriteLine("Press the Enter key to continue.");
-            readResult = Console.ReadLine();
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] == "ID #: ") continue;
+
+                if (ourAnimals[i, 2] == "Age: ?" || ourAnimals[i, 4] == "Physical description: tbd")
+                {
+                    Console.WriteLine($"\n{ourAnimals[i, 0]} has missing fields that need to be completed");
+
+                    if (ourAnimals[i, 2] == "Age: ?")
+                    {
+                        do
+                        {
+                            Console.WriteLine($"Enter an age for {ourAnimals[i, 0]}");
+                            readResult = Console.ReadLine();
+
+                            if (readResult != null)
+                                validEntry = int.TryParse(readResult, out petAge);
+                        } while (!validEntry);
+
+                        ourAnimals[i, 2] = "Age: " + petAge;
+                    }
+
+                    if (ourAnimals[i, 4] == "Physical description: tbd")
+                    {
+                        do
+                        {
+                            Console.WriteLine($"Enter a physical description for {ourAnimals[i, 0]} (size, color, breed, gender, weight, housebroken)");
+                            readResult = Console.ReadLine();
+
+                            if (readResult != null)
+                            {
+                                if (readResult.Length != 0)
+                                {
+                                    ourAnimals[i, 4] = "Physical description: " + readResult;
+                                    validEntry = true;
+                                }
+                                else
+                                    validEntry = false;
+                            }
+                        } while (!validEntry);
+                    }
+                }
+            }
             break;
 
         case "5":
