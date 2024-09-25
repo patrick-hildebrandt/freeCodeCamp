@@ -540,3 +540,48 @@
 //         Console.WriteLine(sentence.TrimStart());
 // }
 
+Console.WriteLine("Signed integral types:");
+
+Console.WriteLine($"sbyte  : {sbyte.MinValue} to {sbyte.MaxValue}");
+Console.WriteLine($"short  : {short.MinValue} to {short.MaxValue}");
+Console.WriteLine($"int    : {int.MinValue} to {int.MaxValue}");
+Console.WriteLine($"long   : {long.MinValue} to {long.MaxValue}");
+
+Console.WriteLine();
+Console.WriteLine("Unsigned integral types:");
+
+Console.WriteLine($"byte : {byte.MinValue} to {byte.MaxValue}");
+Console.WriteLine($"ushort : {ushort.MinValue} to {ushort.MaxValue}");
+Console.WriteLine($"uint : {uint.MinValue} to {uint.MaxValue}");
+Console.WriteLine($"ulong : {ulong.MinValue} to {ulong.MaxValue}");
+
+Console.WriteLine();
+Console.WriteLine("Floating point types:");
+Console.WriteLine($"float : {float.MinValue} to {float.MaxValue} (with ~6-9 digits of precision)");
+Console.WriteLine($"double : {double.MinValue} to {double.MaxValue} (with ~15-17 digits of precision)");
+Console.WriteLine($"decimal : {decimal.MinValue} to {decimal.MaxValue} (with ~28-29 digits of precision)");
+
+// int[] data;
+// data = new int[3];
+int[] data = new int[3];
+
+Console.WriteLine("\nStringtest");
+// string = verweistyp / implementiert als wertttyp
+string string1 = "string";
+string string2 = string1;
+Console.WriteLine(string1);
+Console.WriteLine(string2);
+string2 += 2;
+Console.WriteLine(string1);
+Console.WriteLine(string2);
+
+Console.WriteLine("\nDecimaltest");
+decimal test1 = 1m;
+int test2 = 2;
+var test3 = test1 + test2;
+Console.WriteLine(test3);
+Console.WriteLine(test3.GetType().Name);
+decimal test4 = 4.44m;
+test3 += test4;
+Console.WriteLine(test3);
+Console.WriteLine(test3.GetType().Name);
