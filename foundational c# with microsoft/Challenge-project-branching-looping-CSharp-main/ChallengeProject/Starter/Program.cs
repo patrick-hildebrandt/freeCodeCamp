@@ -313,16 +313,13 @@ do
                             Console.WriteLine($"Enter a physical description for {ourAnimals[i, 0]} (size, color, breed, gender, weight, housebroken)");
                             readResult = Console.ReadLine();
 
-                            if (readResult != null)
-                            {
-                                if (readResult.Length != 0)
+                            if (readResult != null && readResult.Length != 0)
                                 {
                                     ourAnimals[i, 4] = "Physical description: " + readResult;
                                     validEntry = true;
                                 }
                                 else
                                     validEntry = false;
-                            }
                         } while (!validEntry);
                     }
                 }
@@ -339,45 +336,49 @@ do
             {
                 if (ourAnimals[i, 0] == "ID #: ") continue;
 
-                if (ourAnimals[i, 2] == "Age: ?" || ourAnimals[i, 4] == "Physical description: tbd")
+                if (ourAnimals[i, 3] == "Nickname: tbd" || ourAnimals[i, 5] == "Personality: tbd")
                 {
                     Console.WriteLine($"\n{ourAnimals[i, 0]} has missing fields that need to be completed");
 
-                    if (ourAnimals[i, 2] == "Age: ?")
+                    if (ourAnimals[i, 3] == "Nickname: tbd")
                     {
                         do
                         {
-                            Console.WriteLine($"Enter an age for {ourAnimals[i, 0]}");
+                            Console.WriteLine($"Enter a nickname for {ourAnimals[i, 0]}");
                             readResult = Console.ReadLine();
 
-                            if (readResult != null)
-                                validEntry = int.TryParse(readResult, out petAge);
-                        } while (!validEntry);
-
-                        ourAnimals[i, 2] = "Age: " + petAge;
-                    }
-
-                    if (ourAnimals[i, 4] == "Physical description: tbd")
-                    {
-                        do
-                        {
-                            Console.WriteLine($"Enter a physical description for {ourAnimals[i, 0]} (size, color, breed, gender, weight, housebroken)");
-                            readResult = Console.ReadLine();
-
-                            if (readResult != null)
-                            {
-                                if (readResult.Length != 0)
+                            if (readResult != null && readResult.Length != 0)
                                 {
-                                    ourAnimals[i, 4] = "Physical description: " + readResult;
+                                    ourAnimals[i, 3] = "Nickname: " + readResult;
                                     validEntry = true;
                                 }
                                 else
                                     validEntry = false;
-                            }
+                        } while (!validEntry);
+                    }
+
+                    if (ourAnimals[i, 5] == "Personality: tbd")
+                    {
+                        do
+                        {
+                            Console.WriteLine($"Enter a personality description for {ourAnimals[i, 0]} (likes or dislikes, tricks, energy level)");
+                            readResult = Console.ReadLine();
+
+                            if (readResult != null && readResult.Length != 0)
+                                {
+                                    ourAnimals[i, 5] = "Physical description: " + readResult;
+                                    validEntry = true;
+                                }
+                                else
+                                    validEntry = false;
                         } while (!validEntry);
                     }
                 }
             }
+            
+            Console.WriteLine("\nAge and physical description fields are complete for all of our friends.");
+            Console.WriteLine("Press the Enter key to continue");
+            while (Console.ReadKey(false).Key != ConsoleKey.Enter) { }
             break;
 
         case "5":
