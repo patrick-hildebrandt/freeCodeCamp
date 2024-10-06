@@ -887,33 +887,56 @@
 // openingPosition = message.IndexOfAny(openSymbols, startPosition);
 // Console.WriteLine($"Found WITH using startPosition {startPosition}: {message.Substring(openingPosition)}");
 
-string message = "(What if) I have [dirreferent symbols] but every {open symbol} needs a [matching closing symbol]?";
-char[] openSymbols = { '[', '{', '(' };
-int closingPosition = 0;
+// string message = "(What if) I have [dirreferent symbols] but every {open symbol} needs a [matching closing symbol]?";
+// char[] openSymbols = { '[', '{', '(' };
+// int closingPosition = 0;
+// while (true)
+// {
+//     int openingPosition = message.IndexOfAny(openSymbols, closingPosition);
+//     if (openingPosition == -1) break;
+//     string currentSymbol = message.Substring(openingPosition, 1);
+//     char matchingSymbol = ' ';
+//     switch (currentSymbol)
+//     {
+//         case "[":
+//             matchingSymbol = ']';
+//             break;
+//         case "{":
+//             matchingSymbol = '}';
+//             break;
+//         case "(":
+//             matchingSymbol = ')';
+//             break;
+//     }
+//     openingPosition += 1;
+//     closingPosition = message.IndexOf(matchingSymbol, openingPosition);
+//     int length = closingPosition - openingPosition;
+//     Console.WriteLine(message.Substring(openingPosition, length));
+// }
 
-while (true)
-{
-    int openingPosition = message.IndexOfAny(openSymbols, closingPosition);
-    if (openingPosition == -1) break;
-    string currentSymbol = message.Substring(openingPosition, 1);
-    char matchingSymbol = ' ';
+// string data = "12345John Smith          5000  3  ";
+// string updatedData = data.Remove(5, 20);
+// Console.WriteLine(updatedData);
+// string message = "This--is--ex-amp-le--da-ta";
+// message = message.Replace("--", " ");
+// message = message.Replace("-", "");
+// Console.WriteLine(message);
 
-    switch (currentSymbol)
-    {
-        case "[":
-            matchingSymbol = ']';
-            break;
-        case "{":
-            matchingSymbol = '}';
-            break;
-        case "(":
-            matchingSymbol = ')';
-            break;
-    }
+// const string input = "<div><h2>Widgets &trade;</h2><span>5000</span></div>";
+// string quantity = "";
+// string output = "";
+// string tag1 = "<span>";
+// string tag2 = "</span>";
+// quantity = input.Substring(input.IndexOf(tag1) + tag1.Length,
+//     input.IndexOf(tag2) - (input.IndexOf(tag1) + tag1.Length));
+// // Console.WriteLine(input.IndexOf(tag2) - input.IndexOf(tag1) + tag1.Length);
+// // Console.WriteLine($"{input.IndexOf(tag2)} - {input.IndexOf(tag1)} + {tag1.Length}");
+// // Console.WriteLine(input.IndexOf(tag2) - (input.IndexOf(tag1) + tag1.Length));
+// // Console.WriteLine($"{input.IndexOf(tag2)} - {input.IndexOf(tag1) + tag1.Length}");
+// output = input;
+// output = output.Replace("<div>", "");
+// output = output.Replace("</div>", "");
+// output = output.Replace("&trade;", "&reg;");
+// Console.WriteLine($"Quantity: {quantity}");
+// Console.WriteLine($"Output: {output}");
 
-    openingPosition += 1;
-    closingPosition = message.IndexOf(matchingSymbol, openingPosition);
-
-    int length = closingPosition - openingPosition;
-    Console.WriteLine(message.Substring(openingPosition, length));
-}
