@@ -89,9 +89,7 @@ do
     readResult = Console.ReadLine();
     
     if (readResult != null)
-    {
         menuSelection = readResult.ToLower();
-    }
 
     switch (menuSelection)
     {
@@ -103,11 +101,10 @@ do
                 {
                     Console.WriteLine();
                     for (int j = 0; j < 6; j++)
-                    {
                         Console.WriteLine(ourAnimals[i, j]);
-                    }
                 }
             }
+
             Console.WriteLine("\nPress the Enter key to continue");
             readResult = Console.ReadLine();
             break;
@@ -119,15 +116,11 @@ do
             for (int i = 0; i < maxPets; i++)
             {
                 if (ourAnimals[i, 0] != "ID #: ")
-                {
                     petCount += 1;
-                }
             }
 
             if (petCount < maxPets)
-            {
                 Console.WriteLine($"We currently have {petCount} pets that need homes. We can manage {maxPets - petCount} more.");
-            }
 
             bool validEntry = false;
 
@@ -142,13 +135,9 @@ do
                     animalSpecies = readResult.ToLower();
 
                     if (animalSpecies != "dog" && animalSpecies != "cat")
-                    {
                         validEntry = false;
-                    }
                     else
-                    {
                         validEntry = true;
-                    }
                 }
             } while (!validEntry);
 
@@ -167,13 +156,9 @@ do
                     animalAge = readResult;
 
                     if (animalAge != "?")
-                    {
                         validEntry = int.TryParse(animalAge, out petAge);
-                    }
                     else
-                    {
                         validEntry = true;
-                    }
                 }
             } while (!validEntry);
 
@@ -188,9 +173,7 @@ do
                     animalPhysicalDescription = readResult.ToLower();
 
                     if (animalPhysicalDescription == "")
-                    {
                         animalPhysicalDescription = "tbd";
-                    }
                 }
             } while (animalPhysicalDescription == "");
 
@@ -205,9 +188,7 @@ do
                     animalPersonalityDescription = readResult.ToLower();
 
                     if (animalPersonalityDescription == "")
-                    {
                         animalPersonalityDescription = "tbd";
-                    }
                 }
             } while (animalPersonalityDescription == "");
 
@@ -222,9 +203,7 @@ do
                     animalNickname = readResult.ToLower();
 
                     if (animalNickname == "")
-                    {
                         animalNickname = "tbd";
-                    }
                 }
             } while (animalNickname == "");
 
@@ -251,9 +230,7 @@ do
                     {
                         readResult = Console.ReadLine();
                         if (readResult != null)
-                        {
                             anotherPet = readResult.ToLower();
-                        }
                     } while (anotherPet != "y" && anotherPet != "n");
                 }
             }
@@ -309,11 +286,3 @@ do
     }
 
 } while (menuSelection != "exit");
-
-// VS Code console exit = Ctrl + C
-// =>
-// int j = 0;
-// while (true)
-// {
-//     Console.WriteLine($"{++j}");
-// }

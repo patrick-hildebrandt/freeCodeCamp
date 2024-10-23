@@ -70,7 +70,6 @@ for (int i = 0; i < maxPets; i++)
             animalNickname = "";
             suggestedDonation = "";
             break;
-
     }
 
     ourAnimals[i, 0] = "ID #: " + animalID;
@@ -81,9 +80,8 @@ for (int i = 0; i < maxPets; i++)
     ourAnimals[i, 5] = "Personality: " + animalPersonalityDescription;
 
     if (!decimal.TryParse(suggestedDonation, out decimalDonation))
-    {
         decimalDonation = 45.00m;
-    }
+
     ourAnimals[i, 6] = $"Suggested Donation: {decimalDonation:C2}";
 }
 
@@ -101,9 +99,7 @@ do
 
     readResult = Console.ReadLine();
     if (readResult != null)
-    {
         menuSelection = readResult.ToLower();
-    }
 
     // use switch-case to process the selected menu option
     switch (menuSelection)
@@ -116,14 +112,12 @@ do
                 {
                     Console.WriteLine();
                     for (int j = 0; j < 7; j++)
-                    {
                         Console.WriteLine(ourAnimals[i, j]);
-                    }
                 }
             }
+
             Console.WriteLine("\n\rPress the Enter key to continue");
             readResult = Console.ReadLine();
-
             break;
 
         case "2":
@@ -135,6 +129,7 @@ do
                 // have the user enter physical charateristics to search for
                 Console.WriteLine($"\nEnter one desired dog characteristics to search for");
                 readResult = Console.ReadLine();
+
                 if (readResult != null)
                     dogCharacteristic = readResult.ToLower().Trim();
             }
@@ -152,13 +147,12 @@ do
 
                     if (dogDescription.Contains(dogCharacteristic))
                     {
-                        Console.WriteLine($"\nOur dog {ourAnimals[i, 3]} is a metch!");
+                        Console.WriteLine($"\nOur dog {ourAnimals[i, 3]} is a match!");
                         Console.WriteLine(dogDescription);
 
                         noMatchesDog = false;
                     }
                 }
-
             }
 
             if (noMatchesDog)

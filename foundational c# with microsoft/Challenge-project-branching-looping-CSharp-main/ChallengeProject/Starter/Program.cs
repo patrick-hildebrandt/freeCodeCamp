@@ -60,7 +60,6 @@ for (int i = 0; i < maxPets; i++)
             animalPhysicalDescription = "";
             animalPersonalityDescription = "";
             animalNickname = "";
-
             break;
 
         default:
@@ -71,7 +70,6 @@ for (int i = 0; i < maxPets; i++)
             animalPersonalityDescription = "";
             animalNickname = "";
             break;
-
     }
 
     ourAnimals[i, 0] = "ID #: " + animalID;
@@ -119,14 +117,12 @@ do
                 {
                     Console.WriteLine();
                     for (int j = 0; j < 6; j++)
-                    {
                         Console.WriteLine(ourAnimals[i, j].ToString());
-                    }
                 }
             }
+
             Console.WriteLine("\n\rPress the Enter key to continue");
             readResult = Console.ReadLine();
-
             break;
 
         case "2":
@@ -142,18 +138,15 @@ do
 
             anotherPet = "y";
             petCount = 0;
+
             for (int i = 0; i < maxPets; i++)
             {
                 if (ourAnimals[i, 0] != "ID #: ")
-                {
                     petCount += 1;
-                }
             }
 
             if (petCount < maxPets)
-            {
                 Console.WriteLine($"We currently have {petCount} pets that need homes. We can manage {(maxPets - petCount)} more.");
-            }
 
             while (anotherPet == "y" && petCount < maxPets)
             {
@@ -162,6 +155,7 @@ do
                 {
                     Console.WriteLine("\n\rEnter 'dog' or 'cat' to begin a new entry");
                     readResult = Console.ReadLine();
+
                     if (readResult != null)
                     {
                         animalSpecies = readResult.ToLower();
@@ -171,9 +165,7 @@ do
                             validEntry = false;
                         }
                         else
-                        {
                             validEntry = true;
-                        }
                     }
                 } while (validEntry == false);
 
@@ -185,17 +177,14 @@ do
                 {
                     Console.WriteLine("Enter the pet's age or enter ? if unknown");
                     readResult = Console.ReadLine();
+
                     if (readResult != null)
                     {
                         animalAge = readResult;
                         if (animalAge != "?")
-                        {
                             validEntry = int.TryParse(animalAge, out petAge);
-                        }
                         else
-                        {
                             validEntry = true;
-                        }
                     }
                 } while (validEntry == false);
 
@@ -204,13 +193,12 @@ do
                 {
                     Console.WriteLine("Enter a physical description of the pet (size, color, gender, weight, housebroken)");
                     readResult = Console.ReadLine();
+
                     if (readResult != null)
                     {
                         animalPhysicalDescription = readResult.ToLower();
                         if (animalPhysicalDescription == "")
-                        {
                             animalPhysicalDescription = "tbd";
-                        }
                     }
                 } while (validEntry == false);
 
@@ -219,13 +207,12 @@ do
                 {
                     Console.WriteLine("Enter a description of the pet's personality (likes or dislikes, tricks, energy level)");
                     readResult = Console.ReadLine();
+
                     if (readResult != null)
                     {
                         animalPersonalityDescription = readResult.ToLower();
                         if (animalPersonalityDescription == "")
-                        {
                             animalPersonalityDescription = "tbd";
-                        }
                     }
                 } while (validEntry == false);
 
@@ -234,13 +221,12 @@ do
                 {
                     Console.WriteLine("Enter a nickname for the pet");
                     readResult = Console.ReadLine();
+
                     if (readResult != null)
                     {
                         animalNickname = readResult.ToLower();
                         if (animalNickname == "")
-                        {
                             animalNickname = "tbd";
-                        }
                     }
                 } while (validEntry == false);
 
@@ -263,11 +249,9 @@ do
                     do
                     {
                         readResult = Console.ReadLine();
-                        if (readResult != null)
-                        {
-                            anotherPet = readResult.ToLower();
-                        }
 
+                        if (readResult != null)
+                            anotherPet = readResult.ToLower();
                     } while (anotherPet != "y" && anotherPet != "n");
                 }
                 //NOTE: The value of anotherPet (either "y" or "n") is evaluated in the while statement expression - at the top of the while loop
@@ -327,6 +311,7 @@ do
 
             Console.WriteLine("\nAge and physical description fields are complete for all of our friends.");
             Console.WriteLine("Press the Enter key to continue");
+
             while (Console.ReadKey(false).Key != ConsoleKey.Enter) { }
             break;
 
@@ -378,6 +363,7 @@ do
             
             Console.WriteLine("\nAge and physical description fields are complete for all of our friends.");
             Console.WriteLine("Press the Enter key to continue");
+            
             while (Console.ReadKey(false).Key != ConsoleKey.Enter) { }
             break;
 
