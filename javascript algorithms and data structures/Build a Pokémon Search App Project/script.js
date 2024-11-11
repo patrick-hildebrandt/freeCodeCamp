@@ -101,10 +101,7 @@ const harmonizeName = name => {
     return name.toLowerCase();
 };
 
-const capitalizeFirstChar = str => {
-    if (!str) return str;
-    return str.charAt(0).toUpperCase() + str.slice(1);
-};
+v
 
 const findId = (nameOrId, allPokemon) => {
     if (regexStr.test(nameOrId)) {
