@@ -1,0 +1,15 @@
+C:\repos\freeCodeCamp\Debug101\bin\Debug\net9.0\Debug101.exe
+C:\repos\freeCodeCamp\Debug101\bin\Debug\net9.0\Debug101.deps.json
+C:\repos\freeCodeCamp\Debug101\bin\Debug\net9.0\Debug101.runtimeconfig.json
+C:\repos\freeCodeCamp\Debug101\bin\Debug\net9.0\Debug101.dll
+C:\repos\freeCodeCamp\Debug101\bin\Debug\net9.0\Debug101.pdb
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\Debug101.GeneratedMSBuildEditorConfig.editorconfig
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\Debug101.AssemblyInfoInputs.cache
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\Debug101.AssemblyInfo.cs
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\Debug101.csproj.CoreCompileInputs.cache
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\Debug101.sourcelink.json
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\Debug101.dll
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\refint\Debug101.dll
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\Debug101.pdb
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\Debug101.genruntimeconfig.cache
+C:\repos\freeCodeCamp\Debug101\obj\Debug\net9.0\ref\Debug101.dll
