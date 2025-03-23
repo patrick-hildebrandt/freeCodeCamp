@@ -27,7 +27,8 @@ for (int i = 0; i < maxPets; i++)
             animalSpecies = "dog";
             animalID = "d1";
             animalAge = "2";
-            animalPhysicalDescription = "medium sized cream colored female golden retriever weighing about 45 pounds. housebroken.";
+            animalPhysicalDescription =
+            "medium sized cream colored female golden retriever weighing about 45 pounds. housebroken.";
             animalPersonalityDescription = "loves to have her belly rubbed and likes to chase her tail. gives lots of kisses.";
             animalNickname = "lola";
             suggestedDonation = "85.00";
@@ -83,7 +84,7 @@ for (int i = 0; i < maxPets; i++)
 
     if (!decimal.TryParse(suggestedDonation, out decimalDonation))
         decimalDonation = 45.00m; // if suggestedDonation NOT a number, default to 45.00
-    
+
     ourAnimals[i, 6] = $"Suggested Donation: {decimalDonation:C2}";
 }
 
@@ -190,7 +191,7 @@ do
                     Console.WriteLine($"\r\nNickname: {ourAnimals[i, 3]} ({ourAnimals[i, 0]})");
                     Console.WriteLine($"Physical description: {ourAnimals[i, 4]}");
                     Console.WriteLine($"Personality: {ourAnimals[i, 5]}\r\n");
-                    
+
                     dogMatches = false;
                 }
             }
