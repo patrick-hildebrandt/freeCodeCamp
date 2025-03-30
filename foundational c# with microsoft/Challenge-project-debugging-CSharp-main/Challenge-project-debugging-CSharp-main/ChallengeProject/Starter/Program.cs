@@ -93,6 +93,9 @@ while (transactions > 0)
         Console.WriteLine($"Could not complete transaction: {e.Message}");
     }
 
+    string testString1 = TillAmountSummary(cashTill);
+    string testString2 = $"The till has {registerCheckTillTotal} dollars";
+
     Console.WriteLine(TillAmountSummary(cashTill));
     Console.WriteLine($"Expected till value: {registerCheckTillTotal}");
     Console.WriteLine();
