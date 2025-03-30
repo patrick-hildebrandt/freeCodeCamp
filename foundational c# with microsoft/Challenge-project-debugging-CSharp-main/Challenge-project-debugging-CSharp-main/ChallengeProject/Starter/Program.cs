@@ -105,9 +105,7 @@ Console.WriteLine("Press the Enter key to exit");
 do
 {
     readResult = Console.ReadLine();
-
 } while (readResult == null);
-
 
 static void LoadTillEachMorning(int[,] registerDailyStartingCash, int[] cashTill)
 {
