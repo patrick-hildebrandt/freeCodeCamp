@@ -32,8 +32,11 @@ int[] testData = new int[] { 6, 10, 17, 20, 31, 36, 40, 41 };
 int testCounter = 0;
 
 LoadTillEachMorning(registerDailyStartingCash, cashTill);
+registerCheckTillTotal = registerDailyStartingCash[0, 0] * registerDailyStartingCash[0, 1] +
+                           registerDailyStartingCash[1, 0] * registerDailyStartingCash[1, 1] +
+                           registerDailyStartingCash[2, 0] * registerDailyStartingCash[2, 1] +
+                           registerDailyStartingCash[3, 0] * registerDailyStartingCash[3, 1];
 
-registerCheckTillTotal = registerDailyStartingCash[0, 0] * registerDailyStartingCash[0, 1] + registerDailyStartingCash[1, 0] * registerDailyStartingCash[1, 1] + registerDailyStartingCash[2, 0] * registerDailyStartingCash[2, 1] + registerDailyStartingCash[3, 0] * registerDailyStartingCash[3, 1];
 
 // display the number of bills of each denomination currently in the till
 LogTillStatus(cashTill);
@@ -113,10 +116,15 @@ static void LoadTillEachMorning(int[,] registerDailyStartingCash, int[] cashTill
 
 static void MakeChange(int cost, int[] cashTill, int twenties, int tens = 0, int fives = 0, int ones = 0)
 {
-    cashTill[3] += twenties;
-    cashTill[2] += tens;
-    cashTill[1] += fives;
-    cashTill[0] += ones;
+    // Backup des aktuellen Kassenbestands
+    int[] tempTill = new int[cashTill.Length];
+    Array.Copy(cashTill, tempTill, cashTill.Length);
+
+    // Zahlung dem temporären Bestand hinzufügen
+    tempTill[3] += twenties;
+    tempTill[2] += tens;
+    tempTill[1] += fives;
+    tempTill[0] += ones;
 
     int amountPaid = twenties * 20 + tens * 10 + fives * 5 + ones;
     int changeNeeded = amountPaid - cost;
@@ -126,30 +134,30 @@ static void MakeChange(int cost, int[] cashTill, int twenties, int tens = 0, int
 
     Console.WriteLine("Cashier prepares the following change:");
 
-    while ((changeNeeded > 19) && (cashTill[3] > 0))
+    while (changeNeeded > 19 && tempTill[3] > 0)
     {
-        cashTill[3]--;
+        tempTill[3]--;
         changeNeeded -= 20;
         Console.WriteLine("\t A twenty");
     }
 
-    while ((changeNeeded > 9) && (cashTill[2] > 0))
+    while (changeNeeded > 9 && tempTill[2] > 0)
     {
-        cashTill[2]--;
+        tempTill[2]--;
         changeNeeded -= 10;
         Console.WriteLine("\t A ten");
     }
 
-    while ((changeNeeded > 4) && (cashTill[1] > 0))
+    while (changeNeeded > 4 && tempTill[1] > 0)
     {
-        cashTill[1]--;
+        tempTill[1]--;
         changeNeeded -= 5;
         Console.WriteLine("\t A five");
     }
 
-    while ((changeNeeded > 0) && (cashTill[0] > 0))
+    while (changeNeeded > 0 && tempTill[0] > 0)
     {
-        cashTill[0]--;
+        tempTill[0]--;
         changeNeeded -= 1;
         Console.WriteLine("\t A one");
     }
@@ -157,6 +165,11 @@ static void MakeChange(int cost, int[] cashTill, int twenties, int tens = 0, int
     if (changeNeeded > 0)
         throw new InvalidOperationException("InvalidOperationException: The till is unable to make change for the cash provided.");
 
+    // Transaktion erfolgreich, tempTill wird in cashTill übernommen
+    for (int i = 0; i < cashTill.Length; i++)
+    {
+        cashTill[i] = tempTill[i];
+    }
 }
 
 static void LogTillStatus(int[] cashTill)
